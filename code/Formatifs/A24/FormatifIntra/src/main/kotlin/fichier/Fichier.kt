@@ -11,6 +11,9 @@ fun main() {
  */
 fun lire() {
 
+    var fichier: File = File("message.txt")
+    println(fichier.readText())
+
 }
 
 /**
@@ -22,5 +25,19 @@ fun lire() {
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
+
+    if (args.size != 2){
+        println("Message d'erreur")
+        return -1
+    }
+
+
+    try {
+        var fichier : File = File(args[0])
+        fichier.writeText(args[1])
+    } catch (e: Exception) {
+        println(e.message)
+    }
+
     return 1
 }
